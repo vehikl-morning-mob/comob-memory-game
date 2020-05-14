@@ -1,20 +1,24 @@
 <template>
   <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js + TypeScript App"/>
+    <v-card :card="card"/>
   </div>
 </template>
 
 <script lang="ts">
 import { Component, Vue } from 'vue-property-decorator';
 import HelloWorld from './components/HelloWorld.vue';
+import VCard from "@/components/VCard.vue";
+import Card from "@/models/Card";
 
 @Component({
   components: {
+    VCard,
     HelloWorld,
   },
 })
-export default class App extends Vue {}
+export default class App extends Vue {
+  card: Card = new Card('Cat');
+}
 </script>
 
 <style>
