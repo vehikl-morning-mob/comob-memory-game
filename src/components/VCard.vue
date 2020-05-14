@@ -1,5 +1,5 @@
 <template>
-    <div>{{card.content}}</div>
+    <div class="card-content">{{card.content}}</div>
 </template>
 
 <script lang="ts">
@@ -11,3 +11,12 @@
         @Prop() card!:Card;
     }
 </script>
+
+<style>
+    .card-content {
+        border: 1px solid black;
+        border-radius: 1rem;
+        height: 5rem;
+        width: 5rem;
+    }
+</style>
