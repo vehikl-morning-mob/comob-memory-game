@@ -2,9 +2,10 @@ import Card from "@/models/Card";
 
 describe('Card', () => {
     let card: Card;
+    const GIVEN_TEXT = 'cat';
 
     beforeEach(() => {
-        card = new Card();
+        card = new Card(GIVEN_TEXT);
     });
 
     it('is instantiated not flipped by default', () => {
@@ -15,5 +16,15 @@ describe('Card', () => {
         card.flip();
 
         expect(card.isFlipped).toBe(true);
+    });
+
+    it('does not display content if not flipped', () => {
+        expect(card.content).toEqual('');
+    });
+
+    it('displays content if flipped', () => {
+        card.flip();
+
+        expect(card.content).toEqual(GIVEN_TEXT);
     });
 });
