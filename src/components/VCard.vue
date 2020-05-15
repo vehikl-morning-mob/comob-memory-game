@@ -1,5 +1,8 @@
 <template>
-    <div class="card-content">{{card.content}}</div>
+    <div class="card-content"
+         @click="$emit('click')">
+        {{card.content}}
+    </div>
 </template>
 
 <script lang="ts">
