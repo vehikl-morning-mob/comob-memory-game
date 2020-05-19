@@ -3,6 +3,7 @@
         <v-card v-for="(card, index) in game.cards"
                 :key="index"
                 :card="card"
+                @click="game.interactWithCard(index)"
         />
     </div>
 </template>
