@@ -10,13 +10,13 @@ export default class Game {
             throw new Error('All words must be unique.');
         }
 
-        // Work
-        // Pretty
-        // Fast
-
         for (let word of wordsForCards) {
             this.cards.push(new Card(word));
             this.cards.push(new Card(word));
         }
+    }
+
+    public interactWithCard(index :number){
+        this.cards[index].flip();
     }
 }

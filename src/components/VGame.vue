@@ -2,7 +2,8 @@
     <div>
         <v-card v-for="(card, index) in game.cards"
                 :key="index"
-                :card="card"/>
+                :card="card"
+        />
     </div>
 </template>
 

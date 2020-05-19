@@ -1,4 +1,5 @@
 import Game from "../../src/models/Game";
+import Card from "@/models/Card";
 
 describe('Game', () => {
     it('throws exception when non-unique word is passed', () => {
@@ -17,5 +18,17 @@ describe('Game', () => {
         for (const word of testListOfWords) {
             expect(game.cards.filter(card => card.content === word)).toHaveLength(2);
         }
-    })
+    });
+
+    describe('player interaction', function () {
+        it('flips the card on interaction', function () {
+            const testListOfWords = ['cat', 'tree', 'vase'];
+            const game = new Game(testListOfWords)
+
+            game.cards.forEach((card: Card, cardIndex: number) => {
+                game.interactWithCard(cardIndex);
+                expect(card.isFlipped).toBeTruthy();
+            })
+        });
+    });
 })
