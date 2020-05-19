@@ -1,23 +1,15 @@
 <template>
-  <div id="app">
-    <v-card :card="card"/>
-  </div>
+    <v-game/>
 </template>
 
 <script lang="ts">
 import { Component, Vue } from 'vue-property-decorator';
-import HelloWorld from './components/HelloWorld.vue';
-import VCard from "@/components/VCard.vue";
-import Card from "@/models/Card";
+import VGame from "@/components/VGame.vue";
 
 @Component({
-  components: {
-    VCard,
-    HelloWorld,
-  },
+    components: {VGame}
 })
 export default class App extends Vue {
-  card: Card = new Card('Cat');
 }
 </script>
 
