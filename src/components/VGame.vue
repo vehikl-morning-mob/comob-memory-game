@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div class="game">
         <v-card v-for="(card, index) in game.cards"
                 :key="index"
                 :card="card"
@@ -19,10 +19,15 @@
         },
     })
     export default class VGame extends Vue{
-        game: Game = new Game(['cat', 'vase', 'tree']);
+        game: Game = new Game(['cat', 'vase', 'tree', 'mouse', 'dog', 'cow']);
     }
 </script>
 
 <style scoped>
+
+    .game {
+        display: inline-grid;
+        grid-template-columns: repeat(3,1fr);
+    }
 
 </style>
