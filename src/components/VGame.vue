@@ -19,7 +19,7 @@
         },
     })
     export default class VGame extends Vue{
-        game: Game = new Game(['cat', 'vase']);
+        game: Game = new Game(['cat', 'vase', 'tree']);
     }
 </script>
 

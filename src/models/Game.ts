@@ -1,4 +1,5 @@
 import Card from "@/models/Card";
+import shuffle from 'shuffle-array';
 
 export default class Game {
     public cards: Card[] = [];
@@ -14,6 +15,8 @@ export default class Game {
             this.cards.push(new Card(word));
             this.cards.push(new Card(word));
         }
+
+        shuffle(this.cards);
     }
 
     public interactWithCard(index :number){
