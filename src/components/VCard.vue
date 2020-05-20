@@ -21,5 +21,9 @@
         border-radius: 1rem;
         height: 5rem;
         width: 5rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        box-shadow: black 3px 2px 5px;
     }
 </style>
