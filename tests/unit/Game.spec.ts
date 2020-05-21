@@ -5,8 +5,8 @@ describe('Game', () => {
     it('throws exception when non-unique word is passed', () => {
         const testListOfWords = ['cat', 'tree', 'cat', 'vase'];
 
-        expect(()=> {
-              new Game(testListOfWords);
+        expect(() => {
+            new Game(testListOfWords);
         }).toThrow();
     });
 
@@ -31,5 +31,17 @@ describe('Game', () => {
             })
         });
 
+        // TODO: split this test into 2
+        it('flips two cards and they are unflipped after 1 second', () => {
+            const testListOfWords = ['cat', 'tree', 'vase'];
+            const game = new Game(testListOfWords)
+
+            game.interactWithCard(0);
+            game.interactWithCard(1);
+            // TODO: wait for a second
+            game.cards.forEach((card: Card, cardIndex: number) => {
+                expect(card.isFlipped).toBeFalsy();
+            })
+        })
     });
 })
