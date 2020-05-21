@@ -2,7 +2,7 @@
     <div class="card-content"
          :class="{ active: card.isFlipped }"
          @click="$emit('click')">
-        {{card.content}}
+        {{card.visibleContent}}
     </div>
 </template>
 

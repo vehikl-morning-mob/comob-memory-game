@@ -16,7 +16,7 @@ describe('Game', () => {
         game.cards.forEach(card => card.flip());
 
         for (const word of testListOfWords) {
-            expect(game.cards.filter(card => card.content === word)).toHaveLength(2);
+            expect(game.cards.filter(card => card.visibleContent === word)).toHaveLength(2);
         }
     });
 
@@ -30,5 +30,6 @@ describe('Game', () => {
                 expect(card.isFlipped).toBeTruthy();
             })
         });
+
     });
 })

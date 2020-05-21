@@ -1,17 +1,17 @@
 export default class Card {
     private _isFlipped: boolean = false;
-    private _content: string = "";
+    public readonly content: string;
 
     constructor(content: string) {
-        this._content = content;
+        this.content = content;
     }
 
     public get isFlipped(): boolean {
         return this._isFlipped;
     }
 
-    public get content(): string {
-        return this.isFlipped ? this._content : '';
+    public get visibleContent(): string {
+        return this.isFlipped ? this.content : '';
     }
 
     public flip() {

@@ -14,7 +14,7 @@ describe('VCard', () => {
     })
 
     it('renders the content of the card', async () => {
-        expect(wrapper.text()).toMatch(card.content)
+        expect(wrapper.text()).toMatch(card.visibleContent)
     })
 
     it('relays click events', async () => {

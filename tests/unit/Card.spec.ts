@@ -19,12 +19,12 @@ describe('Card', () => {
     });
 
     it('does not display content if not flipped', () => {
-        expect(card.content).toEqual('');
+        expect(card.visibleContent).toEqual('');
     });
 
     it('displays content if flipped', () => {
         card.flip();
 
-        expect(card.content).toEqual(GIVEN_TEXT);
+        expect(card.visibleContent).toEqual(GIVEN_TEXT);
     });
 });
