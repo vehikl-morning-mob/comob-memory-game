@@ -3,7 +3,7 @@ import shuffle from 'shuffle-array';
 
 export default class Game {
     public cards: Card[] = [];
-    private lastFlippedCard: Card | null = null;
+    private cardsInteractedWith: Card[] = [];
 
     constructor(wordsForCards: string[]) {
         const hasDuplicatedValues = () => new Set(wordsForCards).size !== wordsForCards.length;
@@ -21,21 +21,18 @@ export default class Game {
     }
 
     public interactWithCard(index: number) {
-        const incomingCard = this.cards[index];
-        incomingCard.flip();
+        this.cards[index].flip();
+        this.cardsInteractedWith.unshift(this.cards[index]);
         if (this.isNumberOfFlippedCardsEven()) {
-            if (this.lastFlippedCard?.content !== incomingCard.content) {
-                setTimeout((that: any, incomingCard: any) => {
-                    that.lastFlippedCard.flip();
-                    incomingCard.flip();
-                    this.lastFlippedCard = null;
-                }, 1000, this, incomingCard);
-            } else {
-                this.lastFlippedCard = null;
+            if (this.cardsInteractedWith[0].content !== this.cardsInteractedWith[1].content) {
+                setTimeout((context: Game) => this.flipLastTwoCards(context),1000, this);
             }
-        } else {
-            this.lastFlippedCard = incomingCard;
         }
+    }
+
+    private flipLastTwoCards(context: Game) {
+        context.cardsInteractedWith[0].flip();
+        context.cardsInteractedWith[1].flip();
     }
 
     private isNumberOfFlippedCardsEven() {
