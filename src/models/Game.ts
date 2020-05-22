@@ -25,11 +25,13 @@ export default class Game {
         this.cards[index].flip();
         this.cardsInteractedWith.unshift(this.cards[index]);
         this.cardsInteractedWith.length = Game.INTERACTION_STACK_SIZE;
-        if (this.isNumberOfFlippedCardsEven()) {
-            if (this.cardsInteractedWith[0].content !== this.cardsInteractedWith[1].content) {
-                setTimeout(this.flipLastTwoCards.bind(this),1000);
-            }
+        if (this.isNumberOfFlippedCardsEven() && this.areTwoLastCardsDifferent()) {
+            setTimeout(this.flipLastTwoCards.bind(this), 1000);
         }
+    }
+
+    private areTwoLastCardsDifferent() {
+        return this.cardsInteractedWith[0].content !== this.cardsInteractedWith[1].content;
     }
 
     private flipLastTwoCards() {
