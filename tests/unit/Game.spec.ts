@@ -22,18 +22,18 @@ describe('Game', () => {
     });
 
     describe('player interaction', function () {
-        it('flips the card on interaction', function () {
+        let game: Game;
+        beforeEach(() => {
             const testListOfWords = ['cat', 'tree', 'vase'];
-            const game = new Game(testListOfWords)
+            game = new Game(testListOfWords)
+        })
 
+        it('flips the card on interaction', function () {
             game.interactWithCard(0);
             expect(game.cards[0].isFlipped).toBeTruthy();
         });
 
         it('flips two cards with same content and they stay flipped', () => {
-            const testListOfWords = ['cat', 'tree', 'vase'];
-            const game = new Game(testListOfWords)
-
             game.interactWithCard(0);
             let cardsSelected = [game.cards[0]];
             for (let i = 1; i < game.cards.length; i++) {
@@ -51,9 +51,6 @@ describe('Game', () => {
         })
 
         it('flips two cards with different content and they are flipped back after a second', () => {
-            const testListOfWords = ['cat', 'tree', 'vase'];
-            const game = new Game(testListOfWords)
-
             game.interactWithCard(0);
             let cardsSelected = [game.cards[0]];
             for (let i = 1; i < game.cards.length; i++) {
