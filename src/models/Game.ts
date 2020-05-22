@@ -4,6 +4,7 @@ import shuffle from 'shuffle-array';
 export default class Game {
     public cards: Card[] = [];
     private cardsInteractedWith: Card[] = [];
+    private static readonly INTERACTION_STACK_SIZE = 2;
 
     constructor(wordsForCards: string[]) {
         const hasDuplicatedValues = () => new Set(wordsForCards).size !== wordsForCards.length;
@@ -23,16 +24,17 @@ export default class Game {
     public interactWithCard(index: number) {
         this.cards[index].flip();
         this.cardsInteractedWith.unshift(this.cards[index]);
+        this.cardsInteractedWith.length = Game.INTERACTION_STACK_SIZE;
         if (this.isNumberOfFlippedCardsEven()) {
             if (this.cardsInteractedWith[0].content !== this.cardsInteractedWith[1].content) {
-                setTimeout((context: Game) => this.flipLastTwoCards(context),1000, this);
+                setTimeout(this.flipLastTwoCards.bind(this),1000);
             }
         }
     }
 
-    private flipLastTwoCards(context: Game) {
-        context.cardsInteractedWith[0].flip();
-        context.cardsInteractedWith[1].flip();
+    private flipLastTwoCards() {
+        this.cardsInteractedWith[0].flip();
+        this.cardsInteractedWith[1].flip();
     }
 
     private isNumberOfFlippedCardsEven() {
