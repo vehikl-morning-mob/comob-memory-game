@@ -3,12 +3,12 @@ import shuffle from 'shuffle-array';
 
 export default class Game {
     public cards: Card[] = [];
-    private lastFlippedCard: Card = new Card('');
+    private lastFlippedCard: Card | null = null;
 
     constructor(wordsForCards: string[]) {
         const hasDuplicatedValues = () => new Set(wordsForCards).size !== wordsForCards.length;
 
-        if(hasDuplicatedValues()) {
+        if (hasDuplicatedValues()) {
             throw new Error('All words must be unique.');
         }
 
@@ -20,29 +20,22 @@ export default class Game {
         shuffle(this.cards);
     }
 
-    // 1 0 0
-    // 0 1 0
-
-    public interactWithCard(index :number) {
-        // flip the incoming card
-        // if there is an even number of cards visible:
-        //      if the last card content is the same as the incoming content
-        //          do nothing
-        //      else
-        //          wait for a second
-        //          flip both cards back
-        // else
-        //      do nothing
+    public interactWithCard(index: number) {
         const incomingCard = this.cards[index];
         incomingCard.flip();
         if (this.isNumberOfFlippedCardsEven()) {
-            if (this.lastFlippedCard.content !== incomingCard.content) {
-                // TODO: wait for a second
-                this.lastFlippedCard.flip();
-                incomingCard.flip();
+            if (this.lastFlippedCard?.content !== incomingCard.content) {
+                setTimeout((that: any, incomingCard: any) => {
+                    that.lastFlippedCard.flip();
+                    incomingCard.flip();
+                    this.lastFlippedCard = null;
+                }, 1000, this, incomingCard);
+            } else {
+                this.lastFlippedCard = null;
             }
+        } else {
+            this.lastFlippedCard = incomingCard;
         }
-        this.lastFlippedCard = incomingCard
     }
 
     private isNumberOfFlippedCardsEven() {

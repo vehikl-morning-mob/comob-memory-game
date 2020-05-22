@@ -50,7 +50,7 @@ describe('Game', () => {
             })
         })
 
-        it('flips two cards with different content and they are flipped back', () => {
+        it('flips two cards with different content and they are flipped back after a second', () => {
             const testListOfWords = ['cat', 'tree', 'vase'];
             const game = new Game(testListOfWords)
 
@@ -63,6 +63,10 @@ describe('Game', () => {
                     break;
                 }
             }
+
+            cardsSelected.forEach((card: Card, cardIndex: number) => {
+                expect(card.isFlipped).toBeTruthy();
+            })
 
             jest.advanceTimersByTime(1000);
 
