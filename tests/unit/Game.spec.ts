@@ -71,5 +71,11 @@ describe('Game', () => {
                 expect(card.isFlipped).toBeFalsy();
             })
         })
+
+        it('cannot unflip a card that is already flipped', () => {
+            game.interactWithCard(0);
+            game.interactWithCard(0);
+            expect(game.cards[0].isFlipped).toBeTruthy();
+        });
     });
 })

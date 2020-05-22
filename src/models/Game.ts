@@ -22,8 +22,12 @@ export default class Game {
     }
 
     public interactWithCard(index: number) {
-        this.cards[index].flip();
-        this.cardsInteractedWith.unshift(this.cards[index]);
+        let currentCard = this.cards[index];
+        if (currentCard.isFlipped) {
+            return;
+        }
+        currentCard.flip();
+        this.cardsInteractedWith.unshift(currentCard);
         this.cardsInteractedWith.length = Game.INTERACTION_STACK_SIZE;
         if (this.isNumberOfFlippedCardsEven() && this.areTwoLastCardsDifferent()) {
             setTimeout(this.flipLastTwoCards.bind(this), 1000);
