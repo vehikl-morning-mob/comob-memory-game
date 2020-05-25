@@ -23,8 +23,9 @@ describe('Game', () => {
 
     describe('player interaction', function () {
         let game: Game;
+        let testListOfWords: string[];
         beforeEach(() => {
-            const testListOfWords = ['cat', 'tree', 'vase'];
+            testListOfWords = ['cat', 'tree', 'vase'];
             game = new Game(testListOfWords)
         })
 
@@ -76,6 +77,20 @@ describe('Game', () => {
             game.interactWithCard(0);
             game.interactWithCard(0);
             expect(game.cards[0].isFlipped).toBeTruthy();
+        });
+
+        it('informs when the game is over', () => {
+            expect(game.isOver).toBe(false);
+
+            testListOfWords.forEach((word: string) => {
+                game.cards.forEach((card: Card, cardIndex: number) => {
+                    if (card.content === word) {
+                        game.interactWithCard(cardIndex);
+                    }
+                })
+            });
+
+           expect(game.isOver).toBe(true);
         });
     });
 })

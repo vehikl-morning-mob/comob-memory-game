@@ -2,9 +2,9 @@ import Card from "@/models/Card";
 import shuffle from 'shuffle-array';
 
 export default class Game {
+    private static readonly INTERACTION_STACK_SIZE = 2;
     public cards: Card[] = [];
     private cardsInteractedWith: Card[] = [];
-    private static readonly INTERACTION_STACK_SIZE = 2;
 
     constructor(wordsForCards: string[]) {
         const hasDuplicatedValues = () => new Set(wordsForCards).size !== wordsForCards.length;
@@ -46,5 +46,9 @@ export default class Game {
     private isNumberOfFlippedCardsEven() {
         const numberOfFlippedCards = this.cards.filter((card: Card) => card.isFlipped).length;
         return numberOfFlippedCards % 2 === 0;
+    }
+
+    get isOver() {
+        return this.cards.every(card => card.isFlipped);
     }
 }
