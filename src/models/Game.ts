@@ -1,10 +1,11 @@
-import Card from "@/models/Card";
 import shuffle from 'shuffle-array';
+import Card from './Card';
 
 export default class Game {
     public cards: Card[] = [];
     private cardsInteractedWith: Card[] = [];
     private static readonly INTERACTION_STACK_SIZE = 2;
+    private isAllowingUserInput: boolean =  true;
 
     constructor(wordsForCards: string[]) {
         const hasDuplicatedValues = () => new Set(wordsForCards).size !== wordsForCards.length;
@@ -23,13 +24,15 @@ export default class Game {
 
     public interactWithCard(index: number) {
         let currentCard = this.cards[index];
-        if (currentCard.isFlipped) {
-            return;
+        if (currentCard.isFlipped || !this.isAllowingUserInput) {
+           
+           return;
         }
         currentCard.flip();
         this.cardsInteractedWith.unshift(currentCard);
         this.cardsInteractedWith.length = Game.INTERACTION_STACK_SIZE;
         if (this.isNumberOfFlippedCardsEven() && this.areTwoLastCardsDifferent()) {
+            this.isAllowingUserInput = false;
             setTimeout(this.flipLastTwoCards.bind(this), 1000);
         }
     }
@@ -41,6 +44,7 @@ export default class Game {
     private flipLastTwoCards() {
         this.cardsInteractedWith[0].flip();
         this.cardsInteractedWith[1].flip();
+        this.isAllowingUserInput = true;
     }
 
     private isNumberOfFlippedCardsEven() {
