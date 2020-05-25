@@ -1,11 +1,12 @@
 <template>
     <div class="game">
         <p v-if="game.isOver">The game is over</p>
-        <v-card v-for="(card, index) in game.cards"
-                :key="index"
-                :card="card"
-                @click="game.interactWithCard(index)"
-        />
+        <div class="card-grid">
+            <v-card v-for="(card, index) in game.cards"
+                    :key="index"
+                    :card="card"
+                    @click="game.interactWithCard(index)"/>
+        </div>
     </div>
 </template>
 
@@ -20,13 +21,13 @@
         },
     })
     export default class VGame extends Vue{
-        game: Game = new Game(['cat', 'vase', 'tree', 'mouse', 'dog', 'cow']);
+        game: Game = new Game(['cat', 'vase', 'tree']);
     }
 </script>
 
 <style scoped>
 
-    .game {
+    .card-grid {
         display: inline-grid;
         grid-template-columns: repeat(3,1fr);
         grid-gap: 1rem;
