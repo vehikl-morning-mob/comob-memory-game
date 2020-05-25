@@ -20,7 +20,7 @@ describe('Game', () => {
             expect(game.cards.filter(card => card.visibleContent === word)).toHaveLength(2);
         }
     });
-
+    it('', (
     describe('player interaction', function () {
         let game: Game;
         beforeEach(() => {
@@ -78,7 +78,7 @@ describe('Game', () => {
             expect(game.cards[0].isFlipped).toBeTruthy();
         });
 
-        it('disables flipping a card while pausing after fliping 2 different cards', () => {
+        it('disables flipping a card while pausing after flipping 2 different cards', () => {
             game.interactWithCard(0);
             for (let i = 1; i < game.cards.length; i++) {
                 if (game.cards[i].content !== game.cards[0].content) {
