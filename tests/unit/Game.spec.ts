@@ -79,6 +79,19 @@ describe('Game', () => {
             expect(game.cards[0].isFlipped).toBeTruthy();
         });
 
+        it('disables flipping a card while pausing after flipping 2 different cards', () => {
+            game.interactWithCard(0);
+            for (let i = 1; i < game.cards.length; i++) {
+                if (game.cards[i].content !== game.cards[0].content) {
+                    game.interactWithCard(i);
+                    game.interactWithCard(i+1);
+                    expect(game.cards[i+1].isFlipped).toBeFalsy();
+                    break;
+                }
+            }
+
+        });
+
         it('informs when the game is over', () => {
             expect(game.isOver).toBe(false);
 
