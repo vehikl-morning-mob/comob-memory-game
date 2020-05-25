@@ -2,7 +2,7 @@
     <div class="card-content"
          :class="{ active: card.isFlipped }"
          @click="$emit('click')">
-        {{card.visibleContent}}
+        <img :src="`https://picsum.photos/seed/${card.visibleContent}/80/80`" alt="card content">
     </div>
 </template>
 

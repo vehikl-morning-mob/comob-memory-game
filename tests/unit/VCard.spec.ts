@@ -11,25 +11,17 @@ describe('VCard', () => {
         wrapper = shallowMount(VCard, {
             propsData: {card}
         })
-    })
+    });
 
     it('renders the content of the card', async () => {
-        expect(wrapper.text()).toMatch(card.visibleContent)
-    })
+        const element = wrapper.find('img').element as HTMLImageElement;
+        expect(element.src).toContain(card.visibleContent);
+    });
 
     it('relays click events', async () => {
-        /*
-                            Queries       commands
-          incoming          result      public side-effects
-          internal          -----          ------
-          outgoing          -----          contents
-         */
-
         const cardContent = wrapper.find('.card-content');
 
         cardContent.trigger('click');
         expect(wrapper.emitted('click')).toBeTruthy();
-
-        // expect(wrapper.text()).toMatch(card.content)
-    })
+    });
 })
