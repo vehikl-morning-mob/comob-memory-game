@@ -1,5 +1,6 @@
 <template>
     <div class="game">
+        <p v-if="game.isOver">The game is over</p>
         <v-card v-for="(card, index) in game.cards"
                 :key="index"
                 :card="card"
