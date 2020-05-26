@@ -1,9 +1,13 @@
 <template>
-    <img :src="`https://picsum.photos/seed/${card.visibleContent}/100/100`"
+    <div @click="$emit('click')">
+        <img v-if="card.isFlipped"
+         :src="`https://picsum.photos/seed/${card.visibleContent}/100/100`"
          alt="card content"
          class="card-content"
-         :class="{ active: card.isFlipped }"
-         @click="$emit('click')">
+         :class="{ active: card.isFlipped }">
+
+        <img src="https://avatars3.githubusercontent.com/u/6425636?s=280&v=4" v-else class="card-content">
+    </div>
 </template>
 
 <script lang="ts">
@@ -18,6 +22,8 @@
 
 <style scoped>
     .card-content {
+        height: 5rem;
+        width: 5rem;
         border: 1px solid black;
         border-radius: 1rem;
         display: flex;
