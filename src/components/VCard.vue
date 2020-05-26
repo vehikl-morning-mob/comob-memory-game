@@ -1,9 +1,9 @@
 <template>
-    <div class="card-content"
+    <img :src="`https://picsum.photos/seed/${card.visibleContent}/100/100`"
+         alt="card content"
+         class="card-content"
          :class="{ active: card.isFlipped }"
          @click="$emit('click')">
-        <img :src="`https://picsum.photos/seed/${card.visibleContent}/80/80`" alt="card content">
-    </div>
 </template>
 
 <script lang="ts">
@@ -18,11 +18,8 @@
 
 <style scoped>
     .card-content {
-        background-color: aquamarine;
         border: 1px solid black;
         border-radius: 1rem;
-        height: 5rem;
-        width: 5rem;
         display: flex;
         align-items: center;
         justify-content: center;
@@ -30,10 +27,6 @@
         cursor: pointer;
         user-select: none;
         transition: all 350ms ease;
-    }
-
-    .card-content.active {
-        background-color: hotpink;
     }
 
     .card-content:hover {
