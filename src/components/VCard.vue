@@ -21,9 +21,12 @@
 </script>
 
 <style scoped>
+    div {
+        --card-size: min(20vw, 20vh);
+    }
     .card-content {
-        height: 5rem;
-        width: 5rem;
+        height: var(--card-size);
+        width: var(--card-size);
         border: 1px solid black;
         border-radius: 1rem;
         display: flex;
