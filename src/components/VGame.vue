@@ -2,7 +2,7 @@
     <div class="game">
         <div v-if="game.isOver" class="game-over-screen">
             <h1>The game is over</h1>
-            <button>Play again</button>
+            <button @click="game.restart()">Play again</button>
         </div>
         <div v-else class="card-grid">
             <v-card v-for="(card, index) in game.cards"
@@ -24,7 +24,7 @@
         },
     })
     export default class VGame extends Vue{
-        game: Game = new Game(['cat']);
+        game: Game = new Game(['cat', 'tree', 'magic']);
     }
 </script>
 

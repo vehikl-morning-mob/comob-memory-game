@@ -55,4 +55,11 @@ export default class Game {
     get isOver() {
         return this.cards.every(card => card.isFlipped);
     }
+
+    public restart() {
+        shuffle(this.cards);
+        for (const card of this.cards) {
+            card.flip();
+        }
+    }
 }
