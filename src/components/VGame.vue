@@ -38,11 +38,13 @@
         font-size: 1.2rem;
         padding: 0.8rem;
         cursor: pointer;
+        opacity: 0.6;
     }
 
     button:hover {
         box-shadow: black 5px 4px 5px;
         transform: scale(1.1);
+        opacity: 0.7;
     }
 
     .card-grid {
