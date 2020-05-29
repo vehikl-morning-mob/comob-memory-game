@@ -1,7 +1,10 @@
 <template>
     <div class="game">
-        <p v-if="game.isOver">The game is over</p>
-        <div class="card-grid">
+        <div v-if="game.isOver" class="game-over-screen">
+            <h1>The game is over</h1>
+            <button>Play again</button>
+        </div>
+        <div v-else class="card-grid">
             <v-card v-for="(card, index) in game.cards"
                     :key="index"
                     :card="card"
@@ -21,7 +24,7 @@
         },
     })
     export default class VGame extends Vue{
-        game: Game = new Game(['cat', 'vase', 'tree', 'dog', 'grass', 'man']);
+        game: Game = new Game(['cat']);
     }
 </script>
 
@@ -30,5 +33,18 @@
         display: inline-grid;
         grid-template-columns: repeat(3,1fr);
         grid-gap: 1rem;
+    }
+
+    .game-over-screen {
+        position: absolute;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        width: 100vw;
+        height: 100vh;
+        top: 0;
+        left: 0;
+        background-color: red;
     }
 </style>
