@@ -24,11 +24,15 @@
         },
     })
     export default class VGame extends Vue{
-        game: Game = new Game(['cat', 'magic', 'whatever']);
+        game: Game = new Game(['cat']);
     }
 </script>
 
 <style scoped>
+    button {
+        font-family: 'Lato', sans-serif;
+    }
+
     .card-grid {
         display: inline-grid;
         grid-template-columns: repeat(3,1fr);

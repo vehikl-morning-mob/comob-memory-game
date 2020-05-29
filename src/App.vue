@@ -5,21 +5,23 @@
 </template>
 
 <script lang="ts">
-import { Component, Vue } from 'vue-property-decorator';
-import VGame from "@/components/VGame.vue";
+    import {Component, Vue} from 'vue-property-decorator';
+    import VGame from "@/components/VGame.vue";
 
-@Component({
-    components: {VGame}
-})
-export default class App extends Vue {
-}
+    @Component({
+        components: {VGame}
+    })
+    export default class App extends Vue {
+    }
 </script>
 
 <style>
-.app {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
-}
+    .app {
+
+        font-family: 'Lato', sans-serif;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+    }
 </style>
