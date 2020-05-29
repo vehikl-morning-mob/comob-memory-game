@@ -31,6 +31,18 @@
 <style scoped>
     button {
         font-family: 'Lato', sans-serif;
+        outline: none;
+        background-color: white;
+        border-radius: 1rem;
+        border: 1px solid black;
+        font-size: 1.2rem;
+        padding: 0.8rem;
+        cursor: pointer;
+    }
+
+    button:hover {
+        box-shadow: black 5px 4px 5px;
+        transform: scale(1.1);
     }
 
     .card-grid {
