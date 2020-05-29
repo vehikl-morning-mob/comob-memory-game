@@ -1,10 +1,10 @@
 <template>
     <div class="game">
         <div v-if="game.isOver" class="game-over-screen">
-            <h1>The game is over</h1>
+            <h1 class="game-over-title">The game is over</h1>
             <button @click="game.restart()">Play again</button>
         </div>
-        <div v-else class="card-grid">
+        <div class="card-grid">
             <v-card v-for="(card, index) in game.cards"
                     :key="index"
                     :card="card"
@@ -24,7 +24,7 @@
         },
     })
     export default class VGame extends Vue{
-        game: Game = new Game(['cat', 'tree', 'magic']);
+        game: Game = new Game(['cat', 'magic', 'whatever']);
     }
 </script>
 
@@ -45,6 +45,10 @@
         height: 100vh;
         top: 0;
         left: 0;
-        background-color: red;
+        background-color: #000000aa;
+    }
+
+    .game-over-title {
+        color: #ffffff;
     }
 </style>
