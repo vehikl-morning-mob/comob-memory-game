@@ -1,0 +1,38 @@
+<style>
+    .square {
+        transition: all 0.5s ease-in;
+        height: 50px;
+        width: 50px;
+        background-color: red;
+    }
+
+    .animation {
+        animation: do-the-mario 1s 1;
+        animation-fill-mode: forwards;
+    }
+
+    @keyframes do-the-mario {
+        0% {
+            transform: scaleX(1);
+            background-color: red;
+        }
+
+        49% {
+            background-color: red;
+        }
+
+        50% {
+            transform: scaleX(0);
+            background-color: blue;
+        }
+
+        100% {
+            transform: scaleX(1);
+            background-color: blue;
+        }
+    }
+</style>
+
+
+<div class="square" id="square" onclick="document.getElementById('square').classList.toggle('animation')">
+</div>
