@@ -68,22 +68,19 @@
 
     @keyframes flip {
         0% {
-            transform: scaleX(1);
-            background-color: red;
+            transform: rotateY(0deg);
         }
 
         49% {
-            background-color: red;
+            transform: rotateY(90deg);
         }
 
         50% {
-            transform: scaleX(0);
-            background-color: blue;
+            transform: rotateY(90deg);
         }
 
         100% {
-            transform: scaleX(1);
-            background-color: blue;
+            transform: rotateY(180deg);
         }
     }
 </style>
