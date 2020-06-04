@@ -2,14 +2,14 @@
     <div @click="$emit('click')">
         <img
                 v-if="card.isFlipped"
-                :src="`https://picsum.photos/seed/${card.visibleContent}/100/100`"
+                :src=cardImageSrc
                 alt="card content"
                 class="card-content"
                 :class="{ active: card.isFlipped, 'flip-animation': card.isFlipped }"
         />
 
         <img
-                src="https://avatars3.githubusercontent.com/u/6425636?s=280&v=4"
+                :src=backgroundSrc
                 v-else
                 class="card-content"
         />
@@ -23,10 +23,15 @@
     @Component
     export default class VCard extends Vue {
         @Prop() card!: Card;
+        backgroundSrc: string = "https://avatars3.githubusercontent.com/u/6425636?s=280&v=4"
+        foregroundSrc: string = `https://picsum.photos/seed/${this.card.visibleContent}/100/100`
+        cardImageSrc: string = this.backgroundSrc;
 
         @Watch("card.isFlipped")
         something() {
-            // alert(" I am being flipped");
+            setTimeout(() => {
+                this.cardImageSrc = this.foregroundSrc;
+            }, 500)
         }
     }
 </script>
