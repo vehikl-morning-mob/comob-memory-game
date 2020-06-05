@@ -26,7 +26,7 @@ import Game from "@/models/Game";
   }
 })
 export default class VGame extends Vue {
-  game: Game = new Game(["cat"]);
+  game: Game = new Game(["cat", "dog"]);
 }
 </script>
 

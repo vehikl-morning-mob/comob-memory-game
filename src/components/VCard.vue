@@ -1,17 +1,10 @@
 <template>
     <div @click="$emit('click')">
         <img
-                v-if="card.isFlipped"
-                :src=cardImageSrc
+                :src="card.isFlipped ? `https://picsum.photos/seed/${this.card.visibleContent}/100/100` : 'https://avatars3.githubusercontent.com/u/6425636?s=280&v=4'"
                 alt="card content"
                 class="card-content"
                 :class="{ active: card.isFlipped, 'flip-animation': card.isFlipped }"
-        />
-
-        <img
-                :src=backgroundSrc
-                v-else
-                class="card-content"
         />
     </div>
 </template>
@@ -23,15 +16,9 @@
     @Component
     export default class VCard extends Vue {
         @Prop() card!: Card;
-        backgroundSrc: string = "https://avatars3.githubusercontent.com/u/6425636?s=280&v=4"
-        foregroundSrc: string = `https://picsum.photos/seed/${this.card.visibleContent}/100/100`
-        cardImageSrc: string = this.backgroundSrc;
 
         @Watch("card.isFlipped")
         something() {
-            setTimeout(() => {
-                this.cardImageSrc = this.foregroundSrc;
-            }, 500)
         }
     }
 </script>
@@ -39,6 +26,7 @@
 <style scoped>
     div {
         --card-size: min(20vw, 20vh);
+        --card-bg-img: url("https://avatars3.githubusercontent.com/u/6425636?s=280&v=4");
     }
 
     .card-content {
@@ -69,10 +57,12 @@
     @keyframes flip {
         0% {
             transform: rotateY(0deg);
+            background-image: var(--card-bg-img);
         }
 
         49% {
             transform: rotateY(90deg);
+            background-image: var(--card-bg-img);
         }
 
         50% {
