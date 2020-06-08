@@ -56,7 +56,6 @@
     }
 
     .card-content:hover {
-        background-color: aliceblue;
         box-shadow: black 5px 4px 5px;
         transform: scale(1.1);
     }
