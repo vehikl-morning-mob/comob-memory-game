@@ -10,14 +10,22 @@
 <script lang="ts">
     import {Component, Prop, Vue, Watch} from "vue-property-decorator";
     import Card from "@/models/Card";
+    import axios from 'axios';
+
 
     @Component
     export default class VCard extends Vue {
         @Prop() card!: Card;
+        foregroundImage: string = '';
+
+        async created() {
+            const response = await axios.create({maxRedirects: 0}).get(`https://picsum.photos/seed/${this.card.content}/100/100`);
+            this.foregroundImage = response.request.responseURL;
+        }
 
         get flipStyle() {
             return {
-                '--card-img': `url(https://picsum.photos/seed/${this.card.visibleContent}/100/100)`
+                '--card-img': `url(${this.foregroundImage})`
             }
         }
     }
