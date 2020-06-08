@@ -1,8 +1,6 @@
 <template>
     <div @click="$emit('click')">
-        <div
-                :style="flipStyle"
-                alt="card content"
+        <div    :style="flipStyle"
                 class="card-content"
                 :class="{ active: card.isFlipped, 'flip-animation': card.isFlipped }"
         />
@@ -15,12 +13,6 @@
 
     @Component
     export default class VCard extends Vue {
-        get CardImage() {
-            return this.card.isFlipped
-                ? `https://picsum.photos/seed/${this.card.visibleContent}/100/100`
-                : 'https://avatars3.githubusercontent.com/u/6425636?s=280&v=4';
-        }
-
         @Prop() card!: Card;
 
         get flipStyle() {
@@ -35,6 +27,7 @@
     div {
         --card-size: min(20vw, 20vh);
         --card-bg-img: url('https://avatars3.githubusercontent.com/u/6425636?s=280&v=4');
+        --card-img: '';
     }
 
     .card-content {
