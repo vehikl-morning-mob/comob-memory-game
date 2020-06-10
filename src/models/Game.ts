@@ -7,7 +7,11 @@ export default class Game {
     private static readonly INTERACTION_STACK_SIZE = 2;
     private isAllowingUserInput: boolean = true;
 
-    constructor(wordsForCards: string[]) {
+    constructor(numberOfPairs: number) {
+        let wordsForCards: string[] = []
+        for (let i = 0; i < numberOfPairs; i++) {
+            wordsForCards.push(i.toString());
+        }
         const hasDuplicatedValues = () => new Set(wordsForCards).size !== wordsForCards.length;
 
         if (hasDuplicatedValues()) {

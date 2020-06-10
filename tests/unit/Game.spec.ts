@@ -3,30 +3,17 @@ import Card from "@/models/Card";
 jest.useFakeTimers();
 
 describe('Game', () => {
-    it('throws exception when non-unique word is passed', () => {
-        const testListOfWords = ['cat', 'tree', 'cat', 'vase'];
+    it('generates pairs of cards for the provided amount of words',  () => {
+        const numberOfPairs = 3;
+        const game = new Game(numberOfPairs);
 
-        expect(() => {
-            new Game(testListOfWords);
-        }).toThrow();
-    });
-
-    it('creates 2 cards per word that is passed to the constructor', () => {
-        const testListOfWords = ['cat', 'tree', 'vase'];
-        const game = new Game(testListOfWords)
-        game.cards.forEach(card => card.flip());
-
-        for (const word of testListOfWords) {
-            expect(game.cards.filter(card => card.visibleContent === word)).toHaveLength(2);
-        }
+        expect(game.cards).toHaveLength(2 * numberOfPairs);
     });
 
     describe('player interaction', function () {
         let game: Game;
-        let testListOfWords: string[];
         beforeEach(() => {
-            testListOfWords = ['cat', 'tree', 'vase'];
-            game = new Game(testListOfWords)
+            game = new Game(3)
         })
 
         it('flips the card on interaction', function () {
@@ -93,9 +80,10 @@ describe('Game', () => {
         });
 
         it('informs when the game is over', () => {
+            let listOfWords = game.cards.map((card: Card) => card.content);
             expect(game.isOver).toBe(false);
 
-            testListOfWords.forEach((word: string) => {
+            listOfWords.forEach((word: string) => {
                 game.cards.forEach((card: Card, cardIndex: number) => {
                     if (card.content === word) {
                         game.interactWithCard(cardIndex);
