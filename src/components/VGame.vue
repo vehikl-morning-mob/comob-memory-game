@@ -1,5 +1,5 @@
 <template>
-    <div class="game">
+    <div class="game" :style="numberOfColumns">
         <div v-if="game.isOver" class="game-over-screen">
             <h1 class="game-over-title">The game is over</h1>
             <button @click="game.restart()">Play again</button>
@@ -16,17 +16,29 @@
 </template>
 
 <script lang="ts">
-  import {Component, Vue} from "vue-property-decorator";
-  import VCard from "@/components/VCard.vue";
-  import Game from "@/models/Game";
+    import {Component, Vue, Watch} from "vue-property-decorator";
+    import VCard from "@/components/VCard.vue";
+    import Game from "@/models/Game";
 
-  @Component({
+    @Component({
         components: {
             VCard
         }
     })
     export default class VGame extends Vue {
-        game: Game = new Game(2);
+        numberOfPairs: number = 8;
+        game: Game = new Game(this.numberOfPairs);
+
+        @Watch('numberOfPairs')
+        reinstantiateGame() {
+            this.game = new Game(this.numberOfPairs);
+        }
+
+        get numberOfColumns() {
+            return {
+                '--number-of-columns': this.numberOfPairs / 2
+            }
+        }
     }
 </script>
 
@@ -51,7 +63,7 @@
 
     .card-grid {
         display: inline-grid;
-        grid-template-columns: repeat(2, 1fr);
+        grid-template-columns: repeat(var(--number-of-columns), 1fr);
         grid-gap: 1rem;
     }
 

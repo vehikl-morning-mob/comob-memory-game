@@ -9,7 +9,7 @@ export default class Game {
 
     constructor(numberOfPairs: number) {
         let wordsForCards: string[] = []
-        for (let i = 0; i < numberOfPairs; i++) {
+        for (let i = 1; i <= numberOfPairs ; i++) {
             wordsForCards.push(i.toString());
         }
         const hasDuplicatedValues = () => new Set(wordsForCards).size !== wordsForCards.length;
