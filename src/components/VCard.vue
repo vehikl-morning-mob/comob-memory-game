@@ -11,6 +11,7 @@
     import {Component, Prop, Vue, Watch} from "vue-property-decorator";
     import Card from "@/models/Card";
     import axios from 'axios';
+    import {ImageService} from "@/services/ImageService";
 
 
     @Component
@@ -19,8 +20,7 @@
         foregroundImage: string = '';
 
         async created() {
-            const response = await axios.create({maxRedirects: 0}).get(`https://picsum.photos/seed/${this.card.content}/100/100`);
-            this.foregroundImage = response.request.responseURL;
+            this.foregroundImage = await ImageService.getImage(this.card.content)
         }
 
         get flipStyle() {
