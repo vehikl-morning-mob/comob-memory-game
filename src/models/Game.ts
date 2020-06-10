@@ -5,7 +5,7 @@ export default class Game {
     public cards: Card[] = [];
     private cardsInteractedWith: Card[] = [];
     private static readonly INTERACTION_STACK_SIZE = 2;
-    private isAllowingUserInput: boolean =  true;
+    private isAllowingUserInput: boolean = true;
 
     constructor(wordsForCards: string[]) {
         const hasDuplicatedValues = () => new Set(wordsForCards).size !== wordsForCards.length;
@@ -26,7 +26,7 @@ export default class Game {
         let currentCard = this.cards[index];
         if (currentCard.isFlipped || !this.isAllowingUserInput) {
 
-           return;
+            return;
         }
         currentCard.flip();
         this.cardsInteractedWith.unshift(currentCard);

@@ -1,16 +1,15 @@
 <template>
     <div @click="$emit('click')">
-        <div    :style="flipStyle"
-                class="card-content"
-                :class="{ active: card.isFlipped, 'flip-animation': card.isFlipped }"
+        <div :style="flipStyle"
+             class="card-content"
+             :class="{ active: card.isFlipped, 'flip-animation': card.isFlipped }"
         />
     </div>
 </template>
 
 <script lang="ts">
-    import {Component, Prop, Vue, Watch} from "vue-property-decorator";
+    import {Component, Prop, Vue} from "vue-property-decorator";
     import Card from "@/models/Card";
-    import axios from 'axios';
     import {ImageService} from "@/services/ImageService";
 
 
