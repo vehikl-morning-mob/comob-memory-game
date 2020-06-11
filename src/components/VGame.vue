@@ -1,7 +1,7 @@
 <template>
     <div class="game" :style="numberOfColumns">
         <label for="numberOfPairs">Number of pairs:</label>
-        <input id="numberOfPairs" type="number" v-model="numberOfPairs">
+        <input id="numberOfPairs" type="number" @input="handleGameSizeInput">
         <div v-if="game.isOver" class="game-over-screen">
             <h1 class="game-over-title">The game is over</h1>
             <button @click="game.restart()">Play again</button>
@@ -27,18 +27,23 @@
             VCard
         }
     })
+
     export default class VGame extends Vue {
         numberOfPairs: number = 8;
         game: Game = new Game(this.numberOfPairs);
 
-        @Watch('numberOfPairs')
-        reinstantiateGame() {
+        handleGameSizeInput(event : InputEvent) {
+            const pairsRequested = parseInt((event.target as HTMLInputElement).value);
+            if (pairsRequested % 2 !== 0) {
+                return;
+            }
+            this.numberOfPairs = pairsRequested;
             this.game = new Game(this.numberOfPairs);
         }
 
         get numberOfColumns() {
             return {
-                '--number-of-columns': this.numberOfPairs / 2
+                '--number-of-columns': Math.ceil(this.numberOfPairs / 2)
             }
         }
     }
