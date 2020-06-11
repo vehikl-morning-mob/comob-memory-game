@@ -1,7 +1,9 @@
 <template>
     <div class="game" :style="numberOfColumns">
-        <label for="numberOfPairs">Number of pairs:</label>
-        <input id="numberOfPairs" type="number" @input="handleGameSizeInput">
+        <label class="game-configuration" for="numberOfPairs">Number of pairs:
+            <input id="numberOfPairs" type="number" @input="handleGameSizeInput " :value="numberOfPairs" step="2" min="2" >
+        </label>
+
         <div v-if="game.isOver" class="game-over-screen">
             <h1 class="game-over-title">The game is over</h1>
             <button @click="game.restart()">Play again</button>
@@ -33,8 +35,9 @@
         game: Game = new Game(this.numberOfPairs);
 
         handleGameSizeInput(event : InputEvent) {
+
             const pairsRequested = parseInt((event.target as HTMLInputElement).value);
-            if (pairsRequested % 2 !== 0) {
+            if (pairsRequested % 2 !== 0 || pairsRequested <= 0) {
                 return;
             }
             this.numberOfPairs = pairsRequested;
@@ -50,6 +53,16 @@
 </script>
 
 <style scoped>
+    .game-configuration {
+        display: flex;
+        margin-bottom: 1rem;
+        justify-content: center;
+    }
+
+    #numberOfPairs {
+        text-align: center;
+    }
+
     button {
         font-family: "Lato", sans-serif;
         outline: none;
