@@ -3,18 +3,18 @@ import Card from "@/models/Card";
 jest.useFakeTimers();
 
 describe('Game', () => {
+    let game: Game;
+    beforeEach(() => {
+        game = new Game(3)
+    })
+
     it('generates pairs of cards for the provided amount of words',  () => {
         const numberOfPairs = 3;
         const game = new Game(numberOfPairs);
 
         expect(game.cards).toHaveLength(2 * numberOfPairs);
     });
-
     describe('player interaction', function () {
-        let game: Game;
-        beforeEach(() => {
-            game = new Game(3)
-        })
 
         it('flips the card on interaction', function () {
             game.interactWithCard(0);
