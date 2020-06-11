@@ -20,7 +20,7 @@
 </template>
 
 <script lang="ts">
-    import {Component, Vue, Watch} from "vue-property-decorator";
+    import {Component, Vue} from "vue-property-decorator";
     import VCard from "@/components/VCard.vue";
     import Game from "@/models/Game";
 
@@ -35,7 +35,6 @@
         game: Game = new Game(this.numberOfPairs);
 
         handleGameSizeInput(event : InputEvent) {
-
             const pairsRequested = parseInt((event.target as HTMLInputElement).value);
             if (pairsRequested % 2 !== 0 || pairsRequested <= 0) {
                 return;
