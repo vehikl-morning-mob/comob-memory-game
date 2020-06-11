@@ -3,9 +3,12 @@ import shuffle from 'shuffle-array';
 
 export default class Game {
     public cards: Card[] = [];
+    public player1Score: number = 0;
+    public player2Score: number = 0;
     private cardsInteractedWith: Card[] = [];
     private static readonly INTERACTION_STACK_SIZE = 2;
     private isAllowingUserInput: boolean = true;
+    private turnNumber: number = 1;
 
     constructor(numberOfPairs: number) {
         let wordsForCards: string[] = []
@@ -26,15 +29,23 @@ export default class Game {
         shuffle(this.cards);
     }
 
+    private increaseScoreOfCurrentPlayer() {
+        this.player1Score += this.turnNumber % 2;
+        this.player2Score += (this.turnNumber + 1) % 2;
+    }
+
     public interactWithCard(index: number) {
         let currentCard = this.cards[index];
         if (currentCard.isFlipped || !this.isAllowingUserInput) {
-
             return;
         }
         currentCard.flip();
         this.cardsInteractedWith.unshift(currentCard);
         this.cardsInteractedWith.length = Game.INTERACTION_STACK_SIZE;
+        if (this.isNumberOfFlippedCardsEven()) {
+            this.increaseScoreOfCurrentPlayer();
+            this.turnNumber++;
+        }
         if (this.isNumberOfFlippedCardsEven() && this.areTwoLastCardsDifferent()) {
             this.isAllowingUserInput = false;
             setTimeout(this.flipLastTwoCards.bind(this), 1000);
