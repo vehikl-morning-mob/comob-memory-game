@@ -63,6 +63,10 @@
         text-align: center;
     }
 
+    #numberOfPairs::-webkit-inner-spin-button {
+        opacity: 1;
+    }
+
     button {
         font-family: "Lato", sans-serif;
         outline: none;
