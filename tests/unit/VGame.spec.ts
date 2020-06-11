@@ -27,7 +27,7 @@ describe('VGame component', () => {
 
     it('allows the player to change the number of pairs rendered', async () => {
         const pairCountInput = wrapper.find('input');
-        let numberOfPairsRequested = 5;
+        let numberOfPairsRequested = 6;
         pairCountInput.setValue(numberOfPairsRequested);
         wrapper.vm.$forceUpdate();
         await wrapper.vm.$nextTick();
