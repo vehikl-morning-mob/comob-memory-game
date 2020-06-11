@@ -1,5 +1,7 @@
 <template>
     <div class="game" :style="numberOfColumns">
+        <label for="numberOfPairs">Number of pairs:</label>
+        <input id="numberOfPairs" type="number" v-model="numberOfPairs">
         <div v-if="game.isOver" class="game-over-screen">
             <h1 class="game-over-title">The game is over</h1>
             <button @click="game.restart()">Play again</button>
