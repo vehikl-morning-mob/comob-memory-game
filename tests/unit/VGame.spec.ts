@@ -1,25 +1,30 @@
 import {mount, Wrapper} from "@vue/test-utils";
 import VGame from "@/components/VGame.vue";
 import VCard from "@/components/VCard.vue";
+import Game from "@/models/Game";
 
 describe('VGame component', () => {
     let wrapper: Wrapper<VGame>;
+    let game: Game;
+
     beforeEach(() => {
         wrapper = mount(VGame);
+        game = wrapper.vm.$data.game;
     });
+
     it('renders all its cards', () => {
-        expect(wrapper.findAll(VCard)).toHaveLength(wrapper.vm.$data.game.cards.length)
+        expect(wrapper.findAll(VCard)).toHaveLength(game.cards.length)
     });
 
     it('interacts with the card that has been clicked', () => {
-        const interaction = jest.spyOn(wrapper.vm.$data.game, 'interactWithCard');
+        const interaction = jest.spyOn(game, 'interactWithCard');
         wrapper.find(VCard).trigger('click');
         expect(interaction).toBeCalledWith(0);
     });
 
     it('displays message when game is over', async () => {
         expect(wrapper.text()).not.toContain('The game is over');
-        jest.spyOn(wrapper.vm.$data.game, 'isOver', 'get').mockReturnValue(true);
+        jest.spyOn(game, 'isOver', 'get').mockReturnValue(true);
         wrapper.vm.$forceUpdate();
         await wrapper.vm.$nextTick();
         expect(wrapper.text()).toContain('The game is over');
@@ -32,5 +37,10 @@ describe('VGame component', () => {
         wrapper.vm.$forceUpdate();
         await wrapper.vm.$nextTick();
         expect(wrapper.findAll(VCard)).toHaveLength(numberOfPairsRequested * 2);
+    });
+
+    it('displays the score for both players', () => {
+        expect(wrapper.find('#score-player-one').text()).toContain(game.player1Score);
+        expect(wrapper.find('#score-player-two').text()).toContain(game.player2Score);
     });
 });

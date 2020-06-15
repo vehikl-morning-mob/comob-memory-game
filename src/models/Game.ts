@@ -42,10 +42,14 @@ export default class Game {
         currentCard.flip();
         this.cardsInteractedWith.unshift(currentCard);
         this.cardsInteractedWith.length = Game.INTERACTION_STACK_SIZE;
-        if (this.isNumberOfFlippedCardsEven()) {
+        if (this.isNumberOfFlippedCardsEven() && !this.areTwoLastCardsDifferent()) {
             this.increaseScoreOfCurrentPlayer();
+        }
+
+        if (this.isNumberOfFlippedCardsEven()) {
             this.turnNumber++;
         }
+
         if (this.isNumberOfFlippedCardsEven() && this.areTwoLastCardsDifferent()) {
             this.isAllowingUserInput = false;
             setTimeout(this.flipLastTwoCards.bind(this), 1000);

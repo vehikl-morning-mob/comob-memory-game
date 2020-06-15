@@ -107,5 +107,28 @@ describe('Game', () => {
             expect(game.player1Score).toEqual(1);
             expect(game.player2Score).toEqual(0);
         });
+
+        it('counts the score of each player when player 2 scores', () => {
+            game.interactWithCard(0);
+
+            for (let i = 1; i < game.cards.length; i++) {
+                if (game.cards[i].content !== game.cards[0].content) {
+                    game.interactWithCard(i);
+                    break;
+                }
+            }
+
+            jest.advanceTimersByTime(1000);
+
+            game.interactWithCard(0);
+            for (let i = 1; i < game.cards.length; i++) {
+                if (game.cards[i].content === game.cards[0].content) {
+                    game.interactWithCard(i);
+                }
+            }
+
+            expect(game.player1Score).toEqual(0);
+            expect(game.player2Score).toEqual(1);
+        });
     })
 })

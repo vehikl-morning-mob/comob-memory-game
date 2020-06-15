@@ -1,21 +1,34 @@
 <template>
     <div class="game" :style="numberOfColumns">
         <label class="game-configuration" for="numberOfPairs">Number of pairs:
-            <input id="numberOfPairs" type="number" @input="handleGameSizeInput " :value="numberOfPairs" step="2" min="2" >
+            <input id="numberOfPairs" type="number" @input="handleGameSizeInput" :value="numberOfPairs" step="2" min="2" >
         </label>
 
         <div v-if="game.isOver" class="game-over-screen">
             <h1 class="game-over-title">The game is over</h1>
             <button @click="game.restart()">Play again</button>
         </div>
-        <div class="card-grid">
-            <v-card
-                    v-for="(card, index) in game.cards"
-                    :key="index"
-                    :card="card"
-                    @click="game.interactWithCard(index)"
-            />
+        <div class="game-area">
+            <section id="score-player-one">
+                <h2>Player One</h2>
+                {{game.player1Score}}
+            </section>
+
+            <div class="card-grid">
+                <v-card
+                        v-for="(card, index) in game.cards"
+                        :key="index"
+                        :card="card"
+                        @click="game.interactWithCard(index)"
+                />
+            </div>
+
+            <section id="score-player-two">
+                <h2>Player Two</h2>
+                {{game.player2Score}}
+            </section>
         </div>
+
     </div>
 </template>
 
@@ -85,7 +98,7 @@
     }
 
     .card-grid {
-        display: inline-grid;
+        display: grid;
         grid-template-columns: repeat(var(--number-of-columns), 1fr);
         grid-gap: 1rem;
     }
@@ -106,5 +119,16 @@
 
     .game-over-title {
         color: #ffffff;
+    }
+
+    .game-area {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+    }
+
+    .game-area > section {
+        margin: 0 3rem;
     }
 </style>
