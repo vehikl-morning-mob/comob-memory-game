@@ -17,7 +17,7 @@
             <div class="card-grid">
                 <v-card
                         v-for="(card, index) in game.cards"
-                        :key="index"
+                        :key="`${card.content}-${index}`"
                         :card="card"
                         @click="game.interactWithCard(index)"
                 />
