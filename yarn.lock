@@ -1119,7 +1119,7 @@
   resolved "https://registry.yarnpkg.com/@types/q/-/q-1.5.2.tgz#690a1475b84f2a884fd07cd797c00f5f31356ea8"
   integrity sha512-ce5d3q03Ex0sy4R14722Rmt6MT07Ua+k4FwDfdcToYJcMKNtRVQvJ6JCAPdAmAnbRb6CsX6aYb9m96NGod9uTw==
 
-"@types/shuffle-array@^0.0.28":
+"@types/shuffle-array@0.0.28", "@types/shuffle-array@^0.0.28":
   version "0.0.28"
   resolved "https://registry.yarnpkg.com/@types/shuffle-array/-/shuffle-array-0.0.28.tgz#a1e10d20a409f6528992c4791fa852ffb10e6996"
   integrity sha1-oeENIKQJ9lKJksR5H6hS/7EOaZY=
@@ -9173,6 +9173,14 @@ vary@~1.1.2:
   version "1.1.2"
   resolved "https://registry.yarnpkg.com/vary/-/vary-1.1.2.tgz#2299f02c6ded30d4a5961b0b9f74524a18f634fc"
   integrity sha1-IpnwLG3tMNSllhsLn3RSShj2NPw=
+
+vehikl-memory-game-package@^1.0.0:
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/vehikl-memory-game-package/-/vehikl-memory-game-package-1.0.0.tgz#c599ca56dc4f4a9828b873c33a165376e445c98d"
+  integrity sha512-opJWVMbEjuFSxYB7IIzlNl4+YmAjlMiNvbCu7hm7bAU9S0hmXFX3uBSfA+n9XWOLHvabHT4ew1Bv5h7jCBSm0w==
+  dependencies:
+    "@types/shuffle-array" "0.0.28"
+    shuffle-array "^1.0.1"
 
 vendors@^1.0.0:
   version "1.0.4"

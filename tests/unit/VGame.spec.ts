@@ -1,7 +1,7 @@
 import {mount, Wrapper} from "@vue/test-utils";
 import VGame from "@/components/VGame.vue";
 import VCard from "@/components/VCard.vue";
-import Game from "@/models/Game";
+import {Game} from "vehikl-memory-game-package";
 
 describe('VGame component', () => {
     let wrapper: Wrapper<VGame>;

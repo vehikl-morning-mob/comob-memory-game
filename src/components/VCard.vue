@@ -9,9 +9,8 @@
 
 <script lang="ts">
     import {Component, Prop, Vue} from "vue-property-decorator";
-    import Card from "@/models/Card";
+    import {Card} from "vehikl-memory-game-package";
     import {ImageService} from "@/services/ImageService";
-
 
     @Component
     export default class VCard extends Vue {

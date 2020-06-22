@@ -1,6 +1,6 @@
 import {shallowMount, Wrapper} from '@vue/test-utils'
 import VCard from '@/components/VCard.vue'
-import Card from "@/models/Card";
+import {Card} from "vehikl-memory-game-package";
 import flushPromises from 'flush-promises';
 import {ImageService} from "@/services/ImageService";
 
