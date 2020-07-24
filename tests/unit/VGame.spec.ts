@@ -43,4 +43,13 @@ describe('VGame component', () => {
         expect(wrapper.find('#score-player-one').text()).toContain(game.player1Score);
         expect(wrapper.find('#score-player-two').text()).toContain(game.player2Score);
     });
+
+    it('displays the current player\'s turn', async () => {
+        expect(wrapper.find('#current-player').text()).toContain("Current turn: Player 1");
+        wrapper.findAll(VCard).at(0).trigger('click');
+        expect(wrapper.find('#current-player').text()).toContain("Current turn: Player 1");
+        wrapper.findAll(VCard).at(1).trigger('click');
+        await wrapper.vm.$forceUpdate();
+        expect(wrapper.find('#current-player').text()).toContain("Current turn: Player 2");
+    });
 });
