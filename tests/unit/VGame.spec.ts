@@ -40,8 +40,8 @@ describe('VGame component', () => {
     });
 
     it('displays the score for both players', () => {
-        expect(wrapper.find('#score-player-one').text()).toContain(game.player1Score);
-        expect(wrapper.find('#score-player-two').text()).toContain(game.player2Score);
+        expect(wrapper.find('#score-player-one').text()).toContain(game.player1.score);
+        expect(wrapper.find('#score-player-two').text()).toContain(game.player2.score);
     });
 
     it('displays the current player\'s turn', async () => {

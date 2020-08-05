@@ -1,6 +1,6 @@
 <template>
     <div class="game" :style="numberOfColumns">
-        <div id="current-player">Current turn: Player {{game.currentPlayer}}</div>
+        <div id="current-player">Current turn: Player {{game.currentPlayer.name}}</div>
         <label class="game-configuration" for="numberOfPairs">Number of pairs:
             <input id="numberOfPairs" type="number" @input="handleGameSizeInput" :value="numberOfPairs" step="2" min="2" >
         </label>
@@ -12,7 +12,7 @@
         <div class="game-area">
             <section id="score-player-one">
                 <h2>Player One</h2>
-                {{game.player1Score}}
+                {{game.player1.score}}
             </section>
 
             <div class="card-grid">
@@ -26,7 +26,7 @@
 
             <section id="score-player-two">
                 <h2>Player Two</h2>
-                {{game.player2Score}}
+                {{game.player2.score}}
             </section>
         </div>
 
