@@ -10,7 +10,7 @@
             <button @click="game.restart()">Play again</button>
         </div>
         <div class="game-area">
-            <section id="score-player-one" :class="{'current-player': game.currentPlayer === game.player1}">
+            <section id="score-player-one" :class="{'current-player': game.currentPlayer === game.player1}" class="score">
                 <h2 v-text="game.player1.name"/>
                 {{game.player1.score}}
             </section>
@@ -24,7 +24,7 @@
                 />
             </div>
 
-            <section id="score-player-two" :class="{'current-player': game.currentPlayer === game.player2}">
+            <section id="score-player-two" :class="{'current-player': game.currentPlayer === game.player2}" class="score">
                 <h2 v-text="game.player2.name"/>
                 {{game.player2.score}}
             </section>
@@ -146,5 +146,9 @@
     .current-player {
         border: 1px solid orange;
         padding: 1em;
+    }
+
+    .score {
+        min-width: 5rem;
     }
 </style>
