@@ -150,5 +150,6 @@
 
     .score {
         min-width: 5rem;
+        box-sizing: border-box;
     }
 </style>
