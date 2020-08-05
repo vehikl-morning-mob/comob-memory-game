@@ -50,6 +50,15 @@ describe('VGame component', () => {
         expect(wrapper.find('#score-player-two').text()).toContain(game.player2.name);
     });
 
+    it('highlights the score of the current player', async () => {
+        expect(wrapper.find("#score-player-one").classes("current-player")).toBeTruthy();
+        wrapper.findAll(VCard).at(0).trigger('click');
+        wrapper.findAll(VCard).at(1).trigger('click');
+        await wrapper.vm.$forceUpdate();
+        expect(wrapper.find("#score-player-one").classes("current-player")).toBeFalsy();
+        expect(wrapper.find("#score-player-two").classes("current-player")).toBeTruthy();
+    });
+
     it('displays the current player\'s turn', async () => {
         expect(wrapper.find('#current-player').text()).toContain("Current turn: Player 1");
         wrapper.findAll(VCard).at(0).trigger('click');

@@ -10,7 +10,7 @@
             <button @click="game.restart()">Play again</button>
         </div>
         <div class="game-area">
-            <section id="score-player-one">
+            <section id="score-player-one" :class="{'current-player': game.currentPlayer === game.player1}">
                 <h2 v-text="game.player1.name"/>
                 {{game.player1.score}}
             </section>
@@ -24,7 +24,7 @@
                 />
             </div>
 
-            <section id="score-player-two">
+            <section id="score-player-two" :class="{'current-player': game.currentPlayer === game.player2}">
                 <h2 v-text="game.player2.name"/>
                 {{game.player2.score}}
             </section>
@@ -55,6 +55,7 @@
             }
             this.numberOfPairs = pairsRequested;
             this.game = new Game(this.numberOfPairs);
+            this.game.player1.name = "Someone"
         }
 
         get numberOfColumns() {
@@ -66,6 +67,11 @@
 </script>
 
 <style scoped>
+    * {
+        padding: 0;
+        margin: 0;
+
+    }
     .game-configuration {
         display: flex;
         margin-bottom: 1rem;
@@ -135,5 +141,10 @@
 
     .game-area > section {
         margin: 0 3rem;
+    }
+
+    .current-player {
+        border: 1px solid orange;
+        padding: 1em;
     }
 </style>
