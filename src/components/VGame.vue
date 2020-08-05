@@ -11,7 +11,7 @@
         </div>
         <div class="game-area">
             <section id="score-player-one">
-                <h2>Player One</h2>
+                <h2 v-text="game.player1.name"/>
                 {{game.player1.score}}
             </section>
 
@@ -25,7 +25,7 @@
             </div>
 
             <section id="score-player-two">
-                <h2>Player Two</h2>
+                <h2 v-text="game.player2.name"/>
                 {{game.player2.score}}
             </section>
         </div>

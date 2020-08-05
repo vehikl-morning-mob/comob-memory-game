@@ -44,6 +44,12 @@ describe('VGame component', () => {
         expect(wrapper.find('#score-player-two').text()).toContain(game.player2.score);
     });
 
+
+    it('displays the names of each player in their scoreboards', () => {
+        expect(wrapper.find('#score-player-one').text()).toContain(game.player1.name);
+        expect(wrapper.find('#score-player-two').text()).toContain(game.player2.name);
+    });
+
     it('displays the current player\'s turn', async () => {
         expect(wrapper.find('#current-player').text()).toContain("Current turn: Player 1");
         wrapper.findAll(VCard).at(0).trigger('click');
