@@ -154,12 +154,24 @@
     }
 
     .current-player {
-        border: 1px solid orange;
+        border: 10px solid orange;
         padding: 1em;
+        background-color: hsla(39, 100%, 80%, 0.8);
+        animation: border-grow 0.75s forwards;
+    }
+
+    @keyframes border-grow {
+        0% {
+            border: 0px solid orange;
+        }
+
+        100% {
+            border: 2px solid orange;
+        }
     }
 
     .score {
-        min-width: 5rem;
+        min-width: 8rem;
         box-sizing: border-box;
     }
 </style>
