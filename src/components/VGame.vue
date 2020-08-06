@@ -2,7 +2,8 @@
     <div class="game" :style="numberOfColumns">
         <div id="current-player">Current turn: Player {{game.currentPlayer.name}}</div>
         <label class="game-configuration" for="numberOfPairs">Number of pairs:
-            <input id="numberOfPairs" type="number" @input="handleGameSizeInput" :value="numberOfPairs" step="2" min="2" >
+            <input id="numberOfPairs" type="number" @input="handleGameSizeInput" :value="numberOfPairs" step="2"
+                   min="2">
         </label>
 
         <div v-if="game.isOver" class="game-over-screen">
@@ -10,9 +11,10 @@
             <button @click="game.restart()">Play again</button>
         </div>
         <div class="game-area">
-            <section id="score-player-one" :class="{'current-player': game.currentPlayer === game.player1}" class="score">
+            <section id="score-player-one" :class="{'current-player': game.currentPlayer === game.player1}"
+                     class="score">
                 <h2 v-text="game.player1.name"/>
-                {{game.player1.score}} points
+                {{renderScore(game.player1)}}
             </section>
 
             <div class="card-grid">
@@ -24,9 +26,10 @@
                 />
             </div>
 
-            <section id="score-player-two" :class="{'current-player': game.currentPlayer === game.player2}" class="score">
+            <section id="score-player-two" :class="{'current-player': game.currentPlayer === game.player2}"
+                     class="score">
                 <h2 v-text="game.player2.name"/>
-                {{game.player2.score}} points
+                {{renderScore(game.player2)}}
             </section>
         </div>
 
@@ -37,6 +40,7 @@
     import {Component, Vue} from "vue-property-decorator";
     import VCard from "@/components/VCard.vue";
     import {Game} from "vehikl-memory-game-package";
+    import Player from 'vehikl-memory-game-package/Player';
 
     @Component({
         components: {
@@ -48,7 +52,7 @@
         numberOfPairs: number = 8;
         game: Game = new Game(this.numberOfPairs);
 
-        handleGameSizeInput(event : InputEvent) {
+        handleGameSizeInput(event: InputEvent) {
             const pairsRequested = parseInt((event.target as HTMLInputElement).value);
             if (pairsRequested % 2 !== 0 || pairsRequested <= 0) {
                 return;
@@ -56,6 +60,12 @@
             this.numberOfPairs = pairsRequested;
             this.game = new Game(this.numberOfPairs);
             this.game.player1.name = "Someone"
+        }
+
+        renderScore(player: Player): string {
+            const textAfterNumber = player.score === 1 ? 'point' : 'points';
+
+            return `${player.score} ${textAfterNumber}`;
         }
 
         get numberOfColumns() {
@@ -72,6 +82,7 @@
         margin: 0;
 
     }
+
     .game-configuration {
         display: flex;
         margin-bottom: 1rem;
