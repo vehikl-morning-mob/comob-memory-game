@@ -154,19 +154,24 @@
     }
 
     .current-player {
-        border: 10px solid orange;
         padding: 1em;
-        background-color: hsla(39, 100%, 80%, 0.8);
-        animation: border-grow 0.75s forwards;
+        animation: pop-border 750ms forwards;
+        animation-delay: 1s;
     }
 
-    @keyframes border-grow {
+    @keyframes pop-border {
         0% {
-            border: 0px solid orange;
+            border: 1px solid gray;
+        }
+
+        50% {
+            border: 5px solid orange;
+            transform: scale(1.15);
         }
 
         100% {
-            border: 2px solid orange;
+            border: 3px solid orange;
+            background-color: hsla(39, 100%, 80%, 0.8);
         }
     }
 
