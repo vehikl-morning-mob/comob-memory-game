@@ -12,7 +12,7 @@
         <div class="game-area">
             <section id="score-player-one" :class="{'current-player': game.currentPlayer === game.player1}" class="score">
                 <h2 v-text="game.player1.name"/>
-                {{game.player1.score}}
+                {{game.player1.score}} points
             </section>
 
             <div class="card-grid">
@@ -26,7 +26,7 @@
 
             <section id="score-player-two" :class="{'current-player': game.currentPlayer === game.player2}" class="score">
                 <h2 v-text="game.player2.name"/>
-                {{game.player2.score}}
+                {{game.player2.score}} points
             </section>
         </div>
 
