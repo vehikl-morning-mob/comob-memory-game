@@ -1,6 +1,5 @@
 <template>
     <div class="game" :style="numberOfColumns">
-        <div id="current-player">Current turn: Player {{game.currentPlayer.name}}</div>
         <label class="game-configuration" for="numberOfPairs">Number of pairs:
             <input id="numberOfPairs" type="number" @input="handleGameSizeInput" :value="numberOfPairs" step="2"
                    min="2">
