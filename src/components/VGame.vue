@@ -37,9 +37,9 @@
 </template>
 
 <script lang="ts">
-    import {Component, Vue} from "vue-property-decorator";
-    import VCard from "@/components/VCard.vue";
-    import {Game} from "vehikl-memory-game-package";
+    import {Component, Vue} from 'vue-property-decorator';
+    import VCard from '@/components/VCard.vue';
+    import {Game} from 'vehikl-memory-game-package';
     import Player from 'vehikl-memory-game-package/Player';
 
     @Component({

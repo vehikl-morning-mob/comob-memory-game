@@ -1,10 +1,9 @@
 <template>
-    <div @click="$emit('click')">
-        <div :style="flipStyle"
-             class="card-content"
-             :class="{ active: card.isFlipped, 'flip-animation': card.isFlipped }"
-        />
-    </div>
+    <div class="card-content"
+        :class="{ active: card.isFlipped, 'flip-animation': card.isFlipped }"
+        :style="flipStyle"
+        @click="$emit('click')"
+    />
 </template>
 
 <script lang="ts">
