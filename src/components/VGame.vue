@@ -59,7 +59,6 @@
             }
             this.numberOfPairs = pairsRequested;
             this.game = new Game(this.numberOfPairs);
-            this.game.player1.name = "Someone"
         }
 
         renderScore(player: Player): string {
