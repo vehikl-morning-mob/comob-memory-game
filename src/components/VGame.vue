@@ -182,10 +182,10 @@
     }
 
     .player-one {
-        box-shadow: 0 0 0 5px green;
+        box-shadow: 0 0 0 5px dodgerblue;
     }
 
     .player-two {
-        box-shadow: 0 0 0 5px orange;
+        box-shadow: 0 0 0 5px darkred;
     }
 </style>
