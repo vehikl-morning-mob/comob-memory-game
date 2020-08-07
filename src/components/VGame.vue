@@ -21,6 +21,7 @@
                         v-for="(card, index) in game.cards"
                         :key="`${card.content}-${index}`"
                         :card="card"
+                        :class="{'player-one': game.player1.cardsOwned.includes(card), 'player-two': game.player2.cardsOwned.includes(card)}"
                         @click="game.interactWithCard(index)"
                 />
             </div>
@@ -178,5 +179,13 @@
     .score {
         min-width: 8rem;
         box-sizing: border-box;
+    }
+
+    .player-one {
+        box-shadow: 0 0 0 5px green;
+    }
+
+    .player-two {
+        box-shadow: 0 0 0 5px orange;
     }
 </style>

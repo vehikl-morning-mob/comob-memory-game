@@ -9175,9 +9175,9 @@ vary@~1.1.2:
   integrity sha1-IpnwLG3tMNSllhsLn3RSShj2NPw=
 
 vehikl-memory-game-package@^2.0.0:
-  version "2.0.0"
-  resolved "https://registry.yarnpkg.com/vehikl-memory-game-package/-/vehikl-memory-game-package-2.0.0.tgz#3e6f4582e15ca1e6095b4950db6b7caa26cb70e6"
-  integrity sha512-+CdFd1FYTRblG4R92rbqgzU0bhG+oYKv7PITsdHpqO/QmQ6QHSYe+Mrm984qPLkGWM1kqzV1iN84skP7sNon3Q==
+  version "2.1.0"
+  resolved "https://registry.yarnpkg.com/vehikl-memory-game-package/-/vehikl-memory-game-package-2.1.0.tgz#3ca1fefbf3679916026840390ed025be14717d1e"
+  integrity sha512-mDfDlQVyzeqGacwLfXQBro9lRSvaNvNQ8HQuhrgW2wcs417afl4u8AsxzVBDbYZUvhoYOyuusYvXvlwdI/+brA==
   dependencies:
     "@types/shuffle-array" "0.0.28"
     shuffle-array "^1.0.1"
