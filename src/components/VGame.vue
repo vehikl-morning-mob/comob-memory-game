@@ -11,7 +11,7 @@
         </div>
         <div class="game-area">
             <section id="score-player-one" :class="{'current-player': game.currentPlayer === game.player1}"
-                     class="score">
+                     class="score player-one">
                 <h2 v-text="game.player1.name"/>
                 {{renderScore(game.player1)}}
             </section>
@@ -27,7 +27,7 @@
             </div>
 
             <section id="score-player-two" :class="{'current-player': game.currentPlayer === game.player2}"
-                     class="score">
+                     class="score player-two">
                 <h2 v-text="game.player2.name"/>
                 {{renderScore(game.player2)}}
             </section>
@@ -80,7 +80,7 @@
     * {
         padding: 0;
         margin: 0;
-
+        --base-color: orange;
     }
 
     .game-configuration {
@@ -166,12 +166,12 @@
         }
 
         50% {
-            border: 5px solid orange;
+            border: 5px solid var(--base-color);
             transform: scale(1.15);
         }
 
         100% {
-            border: 3px solid orange;
+            border: 3px solid var(--base-color);
             background-color: hsla(39, 100%, 80%, 0.8);
         }
     }
@@ -182,10 +182,12 @@
     }
 
     .player-one {
-        box-shadow: 0 0 0 5px dodgerblue;
+        --base-color: dodgerblue;
+        box-shadow: 0 0 0 5px var(--base-color);
     }
 
     .player-two {
-        box-shadow: 0 0 0 5px darkred;
+        --base-color: darkred;
+        box-shadow: 0 0 0 5px var(--base-color);
     }
 </style>
