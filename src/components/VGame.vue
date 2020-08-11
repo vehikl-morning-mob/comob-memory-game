@@ -97,6 +97,10 @@
         margin-left: 1rem;
     }
 
+    .game-configuration input {
+        font-size: 1.35rem;
+    }
+
     #numberOfPairs {
         text-align: center;
     }
