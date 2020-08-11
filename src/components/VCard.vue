@@ -41,12 +41,10 @@
         background-position: center;
         height: var(--card-size);
         width: var(--card-size);
-        border: 1px solid black;
         border-radius: 1rem;
         display: flex;
         align-items: center;
         justify-content: center;
-        box-shadow: black 2px 1px 5px;
         cursor: pointer;
         user-select: none;
         transition: all 350ms ease;
