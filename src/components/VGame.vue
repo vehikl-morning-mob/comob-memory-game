@@ -79,17 +79,12 @@
     * {
         padding: 0;
         margin: 0;
-        --base-color: orange;
     }
 
     .game-configuration {
         display: flex;
         margin-bottom: 1rem;
         justify-content: center;
-    }
-
-    #current-player {
-        text-align: center;
     }
 
     #numberOfPairs {
@@ -154,7 +149,6 @@
     }
 
     .current-player {
-        padding: 1em;
         animation: pop-border 750ms forwards;
         animation-delay: 1s;
     }
@@ -171,22 +165,31 @@
 
         100% {
             border: 3px solid var(--base-color);
-            background-color: hsla(39, 100%, 80%, 0.8);
+            background-color: var(--background-color);
         }
     }
 
     .score {
-        min-width: 8rem;
+        --base-color: orange;
+        --background-color: hsla(39, 100%, 80%, 0.8);
+        min-width: 12rem;
         box-sizing: border-box;
+        padding: 1em;
+        background-color: hsla(39, 0%, 100%, 0.50);
+        user-select: none;
     }
 
-    .player-one {
+    .player-one, .player-one:hover {
         --base-color: dodgerblue;
+        --background-color: hsla(210, 100%, 75%, 0.45);
+        color: var(--base-color);
         box-shadow: 0 0 0 5px var(--base-color);
     }
 
-    .player-two {
+    .player-two, .player-two:hover {
         --base-color: darkred;
+        --background-color: hsla(0, 100%, 75%, 0.45);
+        color: var(--base-color);
         box-shadow: 0 0 0 5px var(--base-color);
     }
 </style>
