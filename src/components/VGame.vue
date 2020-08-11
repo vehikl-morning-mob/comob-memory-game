@@ -1,8 +1,12 @@
 <template>
-    <div class="game" :style="numberOfColumns">
-        <label class="game-configuration" for="numberOfPairs">Number of pairs:
-            <input id="numberOfPairs" type="number" @input="handleGameSizeInput" :value="numberOfPairs" step="2"
-                   min="2">
+    <div :style="numberOfColumns">
+        <label class="game-configuration" for="numberOfPairs">
+            Number of pairs:
+            <div>
+                <button ref="minus-button" class="change-size-button" @click="changeGameSize(numberOfPairs-2)"><i class="fa fa-minus" aria-hidden="true"></i></button>
+                <input id="numberOfPairs" type="number" v-model="numberOfPairs" readonly>
+                <button ref="add-button" class="change-size-button" @click="changeGameSize(numberOfPairs+2)"><i class="fa fa-plus" aria-hidden="true"></i></button>
+            </div>
         </label>
 
         <div v-if="game.isOver" class="game-over-screen">
@@ -52,11 +56,11 @@
         numberOfPairs: number = 8;
         game: Game = new Game(this.numberOfPairs);
 
-        handleGameSizeInput(event: InputEvent) {
-            const pairsRequested = parseInt((event.target as HTMLInputElement).value);
-            if (pairsRequested % 2 !== 0 || pairsRequested <= 0) {
+        changeGameSize(pairsRequested: number) {
+            if (pairsRequested % 2 !== 0 || pairsRequested <= 0 || pairsRequested > 10) {
                 return;
             }
+
             this.numberOfPairs = pairsRequested;
             this.game = new Game(this.numberOfPairs);
         }
@@ -85,6 +89,12 @@
         display: flex;
         margin-bottom: 1rem;
         justify-content: center;
+        align-items: center;
+    }
+
+    .game-configuration div {
+        display: flex;
+        margin-left: 1rem;
     }
 
     #numberOfPairs {
@@ -92,7 +102,11 @@
     }
 
     #numberOfPairs::-webkit-inner-spin-button {
-        opacity: 1;
+        -webkit-appearance: none;
+    }
+
+    .change-size-button {
+        border-radius: 0;
     }
 
     button {

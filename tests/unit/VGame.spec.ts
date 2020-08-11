@@ -30,13 +30,18 @@ describe('VGame component', () => {
         expect(wrapper.text()).toContain('The game is over');
     });
 
-    it('allows the player to change the number of pairs rendered', async () => {
-        const pairCountInput = wrapper.find('input');
-        let numberOfPairsRequested = 6;
-        pairCountInput.setValue(numberOfPairsRequested);
-        wrapper.vm.$forceUpdate();
+    it('allows the player to increase the number of pairs rendered', async () => {
+        const addButton = wrapper.find({ ref: 'add-button' });
+        addButton.trigger('click');
         await wrapper.vm.$nextTick();
-        expect(wrapper.findAll(VCard)).toHaveLength(numberOfPairsRequested * 2);
+        expect(wrapper.findAll(VCard)).toHaveLength(20);
+    });
+
+    it('allows the player to decrease the number of pairs rendered', async () => {
+        const minusButton = wrapper.find({ ref: 'minus-button' });
+        minusButton.trigger('click');
+        await wrapper.vm.$nextTick();
+        expect(wrapper.findAll(VCard)).toHaveLength(12);
     });
 
     it('displays the score for both players', () => {
