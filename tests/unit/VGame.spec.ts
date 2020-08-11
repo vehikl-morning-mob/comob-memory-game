@@ -30,19 +30,30 @@ describe('VGame component', () => {
         expect(wrapper.text()).toContain('The game is over');
     });
 
-    it('allows the player to increase the number of pairs rendered', async () => {
-        const addButton = wrapper.find({ ref: 'add-button' });
-        addButton.trigger('click');
-        await wrapper.vm.$nextTick();
-        expect(wrapper.findAll(VCard)).toHaveLength(20);
+    describe('size changing input', () => {
+        let plusButton: Wrapper<any>;
+        let minusButton: Wrapper<any>;
+        let initialNumberOfCards: number;
+
+        beforeEach(() => {
+            plusButton = wrapper.find({ ref: 'plus-button' })
+            minusButton = wrapper.find({ ref: 'minus-button' })
+            initialNumberOfCards = wrapper.findAll(VCard).length
+        });
+
+        it('allows the player to increase the number of pairs rendered', async () => {
+            plusButton.trigger('click');
+            await wrapper.vm.$nextTick();
+            expect(wrapper.findAll(VCard)).toHaveLength(initialNumberOfCards + 4);
+        });
+
+        it('allows the player to decrease the number of pairs rendered', async () => {
+            minusButton.trigger('click');
+            await wrapper.vm.$nextTick();
+            expect(wrapper.findAll(VCard)).toHaveLength(initialNumberOfCards - 4);
+        });
     });
 
-    it('allows the player to decrease the number of pairs rendered', async () => {
-        const minusButton = wrapper.find({ ref: 'minus-button' });
-        minusButton.trigger('click');
-        await wrapper.vm.$nextTick();
-        expect(wrapper.findAll(VCard)).toHaveLength(12);
-    });
 
     it('displays the score for both players', () => {
         expect(wrapper.find('#score-player-one').text()).toContain(game.player1.score);

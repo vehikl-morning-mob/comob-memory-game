@@ -5,7 +5,7 @@
             <div>
                 <button ref="minus-button" class="change-size-button" @click="changeGameSize(numberOfPairs-2)"><i class="fa fa-minus" aria-hidden="true"></i></button>
                 <input id="numberOfPairs" type="number" v-model="numberOfPairs" readonly>
-                <button ref="add-button" class="change-size-button" @click="changeGameSize(numberOfPairs+2)"><i class="fa fa-plus" aria-hidden="true"></i></button>
+                <button ref="plus-button" class="change-size-button" @click="changeGameSize(numberOfPairs+2)"><i class="fa fa-plus" aria-hidden="true"></i></button>
             </div>
         </label>
 
