@@ -1,5 +1,5 @@
 <template>
-    <div :style="numberOfColumns">
+    <div :style="`--number-of-columns: ${numberOfColumns}`">
         <section class="game-configuration">
             <label for="numberOfPairs">
                 Number of pairs:
@@ -81,10 +81,16 @@
             return `${player.score} ${textAfterNumber}`;
         }
 
-        get numberOfColumns() {
-            return {
-                '--number-of-columns': Math.ceil(this.numberOfPairs / 2)
+        get numberOfColumns(): number {
+            if (this.numberOfPairs <= 2) {
+                return 2;
             }
+
+            if (this.numberOfPairs <= 8) {
+                return 4;
+            }
+
+            return 5;
         }
     }
 </script>
