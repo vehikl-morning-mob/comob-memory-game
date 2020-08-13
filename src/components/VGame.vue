@@ -1,5 +1,5 @@
 <template>
-    <div :style="`--number-of-columns: ${numberOfColumns}`">
+    <div class="game" :style="`--number-of-columns: ${numberOfColumns}`">
         <section class="game-configuration">
             <label for="numberOfPairs">
                 Number of pairs:
@@ -23,6 +23,7 @@
             <h1 class="game-over-title">The game is over</h1>
             <button @click="game.restart()">Play again</button>
         </div>
+
         <div class="game-area">
             <section id="score-player-one" :class="{'current-player': game.currentPlayer === game.player1}"
                      class="score player-one">
@@ -46,7 +47,6 @@
                 {{renderScore(game.player2)}}
             </section>
         </div>
-
     </div>
 </template>
 
@@ -101,11 +101,16 @@
         margin: 0;
     }
 
+    .game {
+        height: 100%;
+    }
+
     .game-configuration {
         display: flex;
         margin-bottom: 1rem;
         justify-content: center;
         align-items: center;
+        flex-direction: column;
     }
 
     .game-configuration div {
@@ -176,10 +181,7 @@
         justify-content: center;
         align-items: center;
         text-align: center;
-    }
-
-    .game-area > section {
-        margin: 0 3rem;
+        flex-wrap: wrap;
     }
 
     .current-player {
@@ -211,6 +213,7 @@
         padding: 1em;
         background-color: hsla(39, 0%, 100%, 0.50);
         user-select: none;
+        margin: 1rem 3rem;
     }
 
     .player-one, .player-one:hover {
