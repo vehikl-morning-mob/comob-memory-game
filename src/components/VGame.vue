@@ -229,4 +229,10 @@
         color: var(--base-color);
         box-shadow: 0 0 0 5px var(--base-color);
     }
+
+    @media only screen and (min-width: 425px) {
+        .score {
+            font-size: ;
+        }
+    }
 </style>
