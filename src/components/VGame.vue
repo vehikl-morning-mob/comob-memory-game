@@ -1,13 +1,23 @@
 <template>
     <div :style="numberOfColumns">
-        <label class="game-configuration" for="numberOfPairs">
-            Number of pairs:
+        <section class="game-configuration">
+            <label for="numberOfPairs">
+                Number of pairs:
+            </label>
             <div>
-                <button ref="minus-button" class="change-size-button" @click="changeGameSize(numberOfPairs-2)"><i class="fa fa-minus" aria-hidden="true"></i></button>
+                <button ref="minus-button"
+                        class="change-size-button"
+                        @click="changeGameSize(numberOfPairs-2)">
+                    <i class="fa fa-minus" aria-hidden="true"/>
+                </button>
                 <input id="numberOfPairs" type="number" v-model="numberOfPairs" readonly>
-                <button ref="plus-button" class="change-size-button" @click="changeGameSize(numberOfPairs+2)"><i class="fa fa-plus" aria-hidden="true"></i></button>
+                <button ref="plus-button"
+                        class="change-size-button"
+                        @click="changeGameSize(numberOfPairs+2)">
+                    <i class="fa fa-plus" aria-hidden="true"/>
+                </button>
             </div>
-        </label>
+        </section>
 
         <div v-if="game.isOver" class="game-over-screen">
             <h1 class="game-over-title">The game is over</h1>
