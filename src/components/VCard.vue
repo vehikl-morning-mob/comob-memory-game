@@ -30,7 +30,7 @@
 
 <style scoped>
     div {
-        --card-size: min(20vw, 20vh);
+        --card-size: min(15vw, 20vh);
         --card-bg-img: url('https://avatars3.githubusercontent.com/u/6425636?s=280&v=4');
         --card-img: '';
     }
